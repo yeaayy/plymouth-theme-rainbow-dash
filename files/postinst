@@ -1,0 +1,9 @@
+if command -v plymouth-set-default-theme>/dev/null
+then
+  # Debian
+  plymouth-set-default-theme rainbow-dash -R
+else
+  # Linux mint
+  update-alternatives --install /usr/share/plymouth/themes/default.plymouth default.plymouth /usr/share/plymouth/themes/rainbow-dash/rainbow-dash.plymouth 210
+  update-initramfs -c -k $(uname -r)
+fi

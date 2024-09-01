@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=Rainbow Dash Flying
+Description=A theme that features an animated Rainbow Dash Flying.
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/rainbow-dash
+ScriptFile=/usr/share/plymouth/themes/rainbow-dash/rainbow-dash.script

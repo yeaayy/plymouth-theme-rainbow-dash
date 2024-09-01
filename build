@@ -1,0 +1,24 @@
+#!/bin/bash
+
+VERSION=1.0.0
+TARGET="rainbow-dash/usr/share/plymouth/themes/rainbow-dash"
+
+mkdir -p "$TARGET"
+mkdir rainbow-dash/DEBIAN
+for file in files/*.png
+do
+    cp -t "$TARGET" "$file"
+done
+cp "files/rainbow-dash.plymouth" "$TARGET/rainbow-dash.plymouth"
+cp "files/rainbow-dash.script" "$TARGET/rainbow-dash.script"
+
+for name in control postinst postrm
+do
+    cp -t "rainbow-dash/DEBIAN" "files/$name"
+done
+
+CONTROL=rainbow-dash/DEBIAN/control
+INSTALL_SIZE=$(du --exclude='rainbow-dash/DEBIAN/*' -bd1 rainbow-dash | sed -nEe 's,(^[0-9]+)\s+rainbow-dash$,\1,p')
+sed -i -Ee "s,:VERSION:,${VERSION}," "$CONTROL"
+sed -i -Ee "s,:INSTALL_SIZE:,${INSTALL_SIZE}," "$CONTROL"
+dpkg-deb -b "rainbow-dash" "plymouth-theme-rainbow-dash_${VERSION}_all.deb"

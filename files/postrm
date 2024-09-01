@@ -1,0 +1,9 @@
+if command -v plymouth-set-default-theme>/dev/null
+then
+  # Debian
+  plymouth-set-default-theme $(plymouth-set-default-theme -l | head -n1) -R
+else
+  # Linux mint
+  update-alternatives --remove default.plymouth /usr/share/plymouth/themes/rainbow-dash/rainbow-dash.plymouth
+  update-initramfs -c -k $(uname -r)
+fi

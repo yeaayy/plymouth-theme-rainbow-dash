@@ -1,0 +1,14 @@
+Package: plymouth-theme-rainbow-dash
+Version: :VERSION:
+Architecture: all
+Maintainer: Anonymous
+Bugs: https://github.com/yeaayy/plymouth-theme-rainbow-dash/issues
+Installed-Size: :INSTALL_SIZE:
+Provides: plymouth-theme
+Depends: plymouth
+Description: graphical boot animation and logger - Rainbow Dash flying theme
+ Plymouth is an application that runs very early in the boot process
+ (even before the root filesystem is mounted!) that provides a graphical
+ boot animation while the boot process happens in the background.
+ .
+ This package contains simple animation loop of Rainbow dash flying.
